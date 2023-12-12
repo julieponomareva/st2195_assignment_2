@@ -1,0 +1,6 @@
+library(rvest)
+wiki_page <- read_html("https://en.wikipedia.org/wiki/Comma-separated_values")
+tl_import <- html_nodes(wiki_page,'pre')
+tl_import_txt <- html_text(tl_import[11])
+df <- read.csv(text = tl_import_txt)
+write.csv(df, file = '/Users/julia/st2195_assignment_2/r_csv/cars.csv')
